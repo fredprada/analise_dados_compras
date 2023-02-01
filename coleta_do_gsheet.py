@@ -1,6 +1,3 @@
-pip install streamlit
-pip install gsheetsdb
-
 import streamlit as st
 import pandas as pd
 from gsheetsdb import connect
