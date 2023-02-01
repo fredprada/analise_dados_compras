@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from gsheetsdb import connect
+import gsheetsdb
 
 st.title("Connect to Google Sheets")
 gsheet_url = st.secrets["public_gsheets_url"]
