@@ -1,5 +1,4 @@
 import streamlit as st
-<<<<<<< HEAD
 import pandas as pd
 from gsheetsdb import connect
 import gspread
@@ -21,15 +20,3 @@ data = worksheet.get_all_values()
 df = pd.DataFrame(data)
 
 st.write(df)
-=======
-# import pandas as pd
-# from gsheetsdb import connect
-
-st.title("Connect to Google Sheets")
-# gsheet_url = "https://docs.google.com/spreadsheets/d/1ixMrhGV1TPn14_oTyEIFjszuwuwO9xkbsc1WEBJH3N0/edit?usp=sharing"
-# conn = connect()
-# rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
-# df_gsheet = pd.DataFrame(rows)
-df_gsheet = print('teste')
-st.write(df_gsheet)
->>>>>>> 1f57738f9d085eb32c865912a33e778e93877555
