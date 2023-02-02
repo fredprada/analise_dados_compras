@@ -11,13 +11,15 @@ from ggplot import *
 df = dados_tratados()
 
 st.title("Apresentando histogramas")
-# Criando um histograma
-p = ggplot(df, aes(x='clientes')) + geom_histogram(binwidth=1)
+# # Criando um histograma
+# p = ggplot(df, aes(x='clientes')) + geom_histogram(binwidth=1)
 
-c = ggplot(df, aes(x='compras')) + geom_histogram(binwidth=1)
+# c = ggplot(df, aes(x='compras')) + geom_histogram(binwidth=1)
 
-f = ggplot(df, aes(x='fornecedores')) + geom_histogram(binwidth=1)
+# f = ggplot(df, aes(x='fornecedores')) + geom_histogram(binwidth=1)
 
-st.write(p)
-st.write(c)
-st.write(f)
+# st.write(p)
+# st.write(c)
+# st.write(f)
+
+st.write(df)
