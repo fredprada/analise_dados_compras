@@ -4,7 +4,7 @@ import streamlit as st
 # import scipy
 # from scipy.stats import shapiro
 # import matplotlib.pyplot as plt
-import plotly.figure_factory as ff
+import plotly.express as px
 
 st.title("Apresentando histogramas")
 
@@ -21,8 +21,6 @@ st.write("**Histograma dos clientes**")
 
 # st.pyplot()
 
-hist_data = df['compras']
-fig = ff.create_distplot(
-        hist_data, bin_size=[.1])
+fig = px.histogram(df, x='compras')
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig)
