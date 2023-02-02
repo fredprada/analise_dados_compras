@@ -1,23 +1,10 @@
 import streamlit as st
 import pandas as pd
-from gsheetsdb import connect
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import pyparsing
 
 st.title("Connect to Google Sheets")
 
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
-credentials = st.secrets["CREDENTIALS"]
-creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
-client = gspread.authorize(creds)
+arquivo_base = "dataset_compras.xlsx - Sheet1.csv"
+df = pd.read_csv(arquivo_base)
 
-# Acesse a planilha do Google Sheets pelo nome ou id da planilha
-sheet = client.open("dataset_compras_gsheets")
-worksheet = sheet.get_worksheet(0) # Seleciona a primeira aba
-data = worksheet.get_all_values()
-
-df = pd.DataFrame(data)
 print(df)
 # st.write(df)
