@@ -5,7 +5,7 @@ import streamlit as st
 # from scipy.stats import shapiro
 # import matplotlib.pyplot as plt
 # import plotly
-from ggplot import *
+import ggplot
 
 
 st.title("Apresentando histogramas")
