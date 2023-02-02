@@ -4,24 +4,14 @@ import streamlit as st
 # import scipy
 # from scipy.stats import shapiro
 # import matplotlib.pyplot as plt
-# import plotly
-# import ggplot
-
+import plotly.express as px
 
 st.title("Apresentando histogramas")
 
 # coletando os dados tratados
 df = dados_tratados()
 
-# # Criando um histograma
-# p = ggplot(df, aes(x='clientes')) + geom_histogram(binwidth=1)
-
-# c = ggplot(df, aes(x='compras')) + geom_histogram(binwidth=1)
-
-# f = ggplot(df, aes(x='fornecedores')) + geom_histogram(binwidth=1)
-
-# st.write(p)
-# st.write(c)
-# st.write(f)
-
-st.write("df")
+# histograma dos clientes
+histograma_clientes = px.histogram(df, x="clientes")
+st.write("**Histograma dos clientes**")
+st.plotly_chart(histograma_clientes)
