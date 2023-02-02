@@ -24,4 +24,4 @@ df = dados_tratados()
 # st.write(c)
 # st.write(f)
 
-st.write(df)
+st.write("df")
