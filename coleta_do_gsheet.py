@@ -1,6 +1,6 @@
 import streamlit as st
-import pandas as pd
-from gsheetsdb import connect
+# import pandas as pd
+# from gsheetsdb import connect
 
 st.title("Connect to Google Sheets")
 # gsheet_url = "https://docs.google.com/spreadsheets/d/1ixMrhGV1TPn14_oTyEIFjszuwuwO9xkbsc1WEBJH3N0/edit?usp=sharing"
