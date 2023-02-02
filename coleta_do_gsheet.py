@@ -8,7 +8,7 @@ st.title("Connect to Google Sheets")
 
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-credentials = "C:/Users/Fred/OneDrive/Documentos/FREDERICO/Frederico/6 python_dev/streamlit/credentials.json"
+credentials = st.secrets["CREDENTIALS"]
 creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
 client = gspread.authorize(creds)
 
