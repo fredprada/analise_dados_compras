@@ -3,6 +3,7 @@ import pandas as pd
 from gsheetsdb import connect
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import pyparsing
 
 st.title("Connect to Google Sheets")
 
