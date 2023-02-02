@@ -1,3 +1,5 @@
+pip install plotly
+
 from coleta_de_dados import dados_tratados
 import streamlit as st
 # import numpy as np
