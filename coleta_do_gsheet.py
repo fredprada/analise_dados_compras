@@ -1,3 +1,7 @@
+!pip install gsheetsdb
+!pip install streamlit
+!pip install pandas
+
 import streamlit as st
 import pandas as pd
 from gsheetsdb import connect
