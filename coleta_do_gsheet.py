@@ -18,5 +18,5 @@ worksheet = sheet.get_worksheet(0) # Seleciona a primeira aba
 data = worksheet.get_all_values()
 
 df = pd.DataFrame(data)
-
-st.write(df)
+print(df)
+# st.write(df)
