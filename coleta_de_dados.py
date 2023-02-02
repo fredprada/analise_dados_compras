@@ -1,9 +1,9 @@
-import streamlit as st
 import pandas as pd
 
-st.title("Connect to Google Sheets")
+def dados_tratados():
+    # coleta dos dados tratados
+    global df_raw
+    arquivo_base = "dataset_compras.xlsx - Sheet1.csv"
+    df_raw = pd.read_csv(arquivo_base)
 
-arquivo_base = "dataset_compras.xlsx - Sheet1.csv"
-df = pd.read_csv(arquivo_base)
-
-st.write(df)
+    return df_raw
