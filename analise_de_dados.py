@@ -8,10 +8,14 @@ import plotly.express as px
 
 st.title("Análise de dados de compras")
 st.header("Entendendo o comportamento dos clientes, compras e fornecedores de uma empresa de varejo.")
-st.write("""A análise tem como maior objetivo 
+st.write("""A análise tem como objetivo principal 
                 entender as relações entre as três variáveis
                 a fim de saber qual delas tem maior
                 impacto no total de compras do cliente.""")
+st.empty()
+st.empty()
+st.empty()
+st.empty()
 st.empty()
 
 st.subheader("Histograma de Clientes - original do dataset, sem tratamento")
@@ -20,8 +24,7 @@ st.subheader("Histograma de Clientes - original do dataset, sem tratamento")
 df = dados_tratados()
 
 # histograma dos clientes
+fig = px.histogram(df, x='compras', y='quantidade')
+st.plotly_chart(fig)
 st.caption("O histograma mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados")
 
-fig = px.histogram(df, x='compras')
-
-st.plotly_chart(fig)
