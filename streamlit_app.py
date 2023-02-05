@@ -30,14 +30,14 @@ median_compras = round(df_treated_data['compras'].describe()[5])
 st.metric(label="qtd de ids", value=total_qty_ids)
 
 # metric of client quantities
-st.header("Métricas sobre o número de clientes:")
-col1, col2 = st.columns(2)
+st.subheader("Métricas sobre o número de clientes:")
+col1, col2 = st.columns(8)
 col1.metric(label="média de clientes", value=mean_clientes)
 col2.metric(label="mediana de clientes", value=median_clientes)
 
 # metric of purchase quantities
-st.header("Métricas sobre o número de compras:")
-col1, col2 = st.columns(2)
+st.subheader("Métricas sobre o número de compras:")
+col1, col2 = st.columns(6)
 col1.metric(label="média de compras", value=mean_compras)
 col2.metric(label="mediana de compras", value=median_compras)
 
