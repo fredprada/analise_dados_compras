@@ -22,18 +22,26 @@ df_treated_data = treated_data()
 
 # defining the metrics for later use
 total_qty_ids = df_treated_data.count()[0]
-mean_clientes = df_treated_data['clientes'].describe()[1]
-median_clientes = df_treated_data['clientes'].describe()[5]
+mean_clientes = round(df_treated_data['clientes'].describe()[1])
+median_clientes = round(df_treated_data['clientes'].describe()[5])
+mean_compras = round(df_treated_data['compras'].describe()[1])
+median_compras = round(df_treated_data['compras'].describe()[5])
 
-up_to_40_clients = df_treated_data.query('clientes <=40').count()[0]
+st.metric(label="qtd de ids", value=total_qty_ids)
 
-# metric of client quantity
-col1, col2, col3 = st.columns(3)
-col1.metric(label="ids", value=total_qty_ids)
-col2.metric(label="média", value=mean_clientes)
-col2.metric(label="mediana", value=median_clientes)
+# metric of client quantities
+st.header("Métricas sobre o número de clientes:")
+col1, col2 = st.columns(2)
+col1.metric(label="média de clientes", value=mean_clientes)
+col2.metric(label="mediana de clientes", value=median_clientes)
 
-st.write(df_treated_data.describe())
+# metric of purchase quantities
+st.header("Métricas sobre o número de compras:")
+col1, col2 = st.columns(2)
+col1.metric(label="média de compras", value=mean_compras)
+col2.metric(label="mediana de compras", value=median_compras)
+
+# st.write(df_treated_data.describe())
 
 st.subheader("Box Plot de Clientes - original do dataset, sem tratamento")
 # Client data box plot
@@ -49,15 +57,9 @@ fig.update_layout(
         t=30,
         pad=4
     ))
-st.plotly_chart(fig)
+st.plotly_chart(fig, theme=None)
 st.caption("""O box plot mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.\n
            Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
-# ax = sns.boxplot(
-#     x='clientes',
-#     data=df_treated_data,
-#     orient='h',
-#     showfliers=False)
 
-# ax.figure.set_size_inches(12, 3)
-# ax.set_title('Distribuição da quantidade de clientes', fontsize=18)
+up_to_40_clients = df_treated_data.query('clientes <=40').count()[0]
