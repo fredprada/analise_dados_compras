@@ -25,7 +25,7 @@ total_qty_ids = df_treated_data.count()[0]
 mean_clientes = df_treated_data['clientes'].describe()[1]
 median_clientes = df_treated_data['clientes'].describe()[5]
 
-up_to_40_clients = df_treated_data.query('clients <=40').count()[0]
+up_to_40_clients = df_treated_data.query('clientes <=40').count()[0]
 
 # metric of client quantity
 col1, col2, col3 = st.columns(3)
