@@ -3,3 +3,4 @@ pandas
 gsheetsdb
 matplotlib
 plotly
+seaborn
