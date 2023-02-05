@@ -1,4 +1,4 @@
-from coleta_de_dados import dados_tratados
+from collecting_data import treated_data
 import streamlit as st
 # import numpy as np
 # import scipy
@@ -20,11 +20,10 @@ st.write("""A análise tem como objetivo principal
 
 st.subheader("Histograma de Clientes - original do dataset, sem tratamento")
 
-# coletando os dados tratados
-df = dados_tratados()
+df_treated_data = treated_data()
 
-# histograma dos clientes
-fig = px.histogram(df, x='compras')
+# Client data histogram
+fig = px.histogram(df_treated_data, x='compras')
 st.plotly_chart(fig)
 
 st.caption("O histograma mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados")
