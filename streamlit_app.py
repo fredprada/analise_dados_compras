@@ -30,7 +30,7 @@ median_clientes = df_treated_data['client'].describe()[5]
 up_to_40_clients = df_treated_data.query('clients <=40').count()[0]
 
 # metric of client quantity
-col1, col2, col3, col4 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 col1.metric("ids", total_qty_ids, label_visibility="visible")
 col2.metric("média", mean_clientes, label_visibility="visible")
 col2.metric("mediana", median_clientes, label_visibility="visible")
