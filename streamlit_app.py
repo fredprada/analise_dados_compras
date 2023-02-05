@@ -27,10 +27,14 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
             Abaixo é possível encontrar uma tabela com esses indicadores:""")
 
 # showing descriptive statistics metrics and some insights
-col1, col2,_ = st.columns(3)
+col1, col2, _ = st.columns([2,3,1])
 col1.write(df_treated_data.describe())
-col2.markdown("- É possível identificar que 75% dos ids possuem até 20 clientes somente, portanto este pode ser um ponto de corte para uma análise mais direcionada.")
-col2.markdown("- teste")
+col2.markdown("- 75% dos ids possuem até 20 clientes somente.")
+col2.markdown("- 75% dos ids fizeram até 204 compras.")
+col2.markdown("- 75% dos ids não possuem nenhum fornecedor.")
+col2.markdown("- O número de outliers representa uma parcela perto de 25% dos conjuntos analisados.")
+col2.markdown("- As médias são muito afetadas pelos outliers do conjunto de dados.")
+col2.markdown("- Será necessário analisar as diferentes variáveis de acordo com essas parcelas, tanto dos ids até 75% quanto os 25% restantes.")
 
 # defining the metrics for later use
 total_qty_ids = df_treated_data.count()[0]
