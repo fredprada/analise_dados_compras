@@ -6,17 +6,17 @@ import streamlit as st
 # import matplotlib.pyplot as plt
 import plotly.express as px
 
+st.set_page_config(
+    layout="wide", 
+    page_icon="📈", 
+    page_title="EDA compras")
+
 st.title("Análise de dados de compras")
 st.header("Entendendo o comportamento dos clientes, compras e fornecedores de uma empresa de varejo.")
 st.write("""A análise tem como objetivo principal 
                 entender as relações entre as três variáveis
                 a fim de saber qual delas tem maior
                 impacto no total de compras do cliente.""")
-st.empty()
-st.empty()
-st.empty()
-st.empty()
-st.empty()
 
 st.subheader("Histograma de Clientes - original do dataset, sem tratamento")
 
