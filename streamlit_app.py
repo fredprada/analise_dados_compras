@@ -22,16 +22,16 @@ df_treated_data = treated_data()
 
 # defining the metrics for later use
 total_qty_ids = df_treated_data.count()[0]
-mean_clientes = df_treated_data['client'].describe()[1]
-median_clientes = df_treated_data['client'].describe()[5]
+mean_clientes = df_treated_data['clientes'].describe()[1]
+median_clientes = df_treated_data['clientes'].describe()[5]
 
 up_to_40_clients = df_treated_data.query('clients <=40').count()[0]
 
 # metric of client quantity
 col1, col2, col3 = st.columns(3)
-col1.metric("ids", total_qty_ids, label_visibility="visible")
-col2.metric("média", mean_clientes, label_visibility="visible")
-col2.metric("mediana", median_clientes, label_visibility="visible")
+col1.metric(label="ids", value=total_qty_ids)
+col2.metric(label="média", value=mean_clientes)
+col2.metric(label="mediana", value=median_clientes)
 
 st.write(df_treated_data.describe())
 
