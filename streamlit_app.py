@@ -27,9 +27,9 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
             Abaixo é possível encontrar uma tabela com esses indicadores:""")
 
 # showing descriptive statistics metrics and some insights
-col1, col2 = st.columns(2)
+col1, col2,_ = st.columns(3)
 col1.write(df_treated_data.describe())
-col2.markdown("""* É possível identificar que 75% dos ids possuem até 20 clientes somente, portanto este pode ser um ponto de corte para uma análise mais direcionada.
+col2.markdown("""* É possível identificar que 75% dos ids possuem até 20 clientes somente, portanto este pode ser um ponto de corte para uma análise mais direcionada.<br>
                        * teste""")
 
 # defining the metrics for later use
