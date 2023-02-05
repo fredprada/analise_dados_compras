@@ -4,11 +4,11 @@ import streamlit as st
 # import scipy
 # from scipy.stats import shapiro
 # import matplotlib.pyplot as plt
+import seaborn as sns
 import plotly.express as px
 
 st.set_page_config(
-    layout="wide", 
-    page_icon="📈", 
+    layout="wide",  
     page_title="EDA compras")
 
 st.title("Análise de dados de compras")
@@ -18,13 +18,46 @@ st.write("""A análise tem como objetivo principal
                 a fim de saber qual delas tem maior
                 impacto no total de compras do cliente.""")
 
-st.subheader("Histograma de Clientes - original do dataset, sem tratamento")
+st.subheader("Box Plot de Clientes - original do dataset, sem tratamento")
 
 df_treated_data = treated_data()
 
-# Client data histogram
-fig = px.histogram(df_treated_data, x='compras')
+# defining the metrics for later use
+total_qty_ids = df_treated_data.count()[0]
+mean_clientes = df_treated_data['client'].describe()[1]
+median_clientes = df_treated_data['client'].describe()[5]
+
+up_to_40_clients = df_treated_data.query('clients <=40').count()[0]
+
+# metric of client quantity
+col1, col2, col3, col4 = st.columns(3)
+col1.metric("ids", total_qty_ids, label_visibility="visible")
+col2.metric("média", mean_clientes, label_visibility="visible")
+col2.metric("mediana", median_clientes, label_visibility="visible")
+col4.write(df_treated_data.describe())
+
+# Client data box plot
+fig = px.box(df_treated_data['clientes'], x="clientes")
+fig.update_layout(
+    autosize=False,
+    width=600,
+    height=300,
+    margin=dict(
+        l=30,
+        r=30,
+        b=60,
+        t=30,
+        pad=4
+    ))
 st.plotly_chart(fig)
+st.caption("""O box plot mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.\n
+           Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
-st.caption("O histograma mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados")
+# ax = sns.boxplot(
+#     x='clientes',
+#     data=df_treated_data,
+#     orient='h',
+#     showfliers=False)
 
+# ax.figure.set_size_inches(12, 3)
+# ax.set_title('Distribuição da quantidade de clientes', fontsize=18)
