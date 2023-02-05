@@ -7,19 +7,13 @@ import streamlit as st
 import plotly.express as px
 
 st.title("Apresentando histogramas")
+st.header("Histograma de Clientes - original do dataset, sem tratamento")
 
 # coletando os dados tratados
 df = dados_tratados()
 
 # histograma dos clientes
-st.write("**Histograma dos clientes**")
-
-# plt.figure(figsize=(15,10))
-# plt.hist(df['clientes'], bins=20)
-# # plt.title("Histograma de Pacientes cadastrados")
-# plt.xlabel("Quantidade")
-
-# st.pyplot()
+st.write("O histograma mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados")
 
 fig = px.histogram(df, x='compras')
 
