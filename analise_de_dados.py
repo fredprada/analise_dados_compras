@@ -24,7 +24,8 @@ st.subheader("Histograma de Clientes - original do dataset, sem tratamento")
 df = dados_tratados()
 
 # histograma dos clientes
-fig = px.histogram(df, x='compras', y='quantidade')
+fig = px.histogram(df, x='compras')
 st.plotly_chart(fig)
+
 st.caption("O histograma mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados")
 
