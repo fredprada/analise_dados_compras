@@ -28,7 +28,7 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
 
 # -------------------------------------------------------------
 # showing descriptive statistics metrics and some insights
-col1, col2, col3 = st.columns([3.5,2,1])
+col1, col2, col3 = st.columns([3,2,1])
 col1.write("**Histograma de ids x Clientes - original do dataset, sem tratamento**")
 # Client data box plot
 # fig = px.box(df_treated_data['clientes'], x="clientes")
@@ -46,7 +46,7 @@ fig.update_layout(
     ))
 col1.plotly_chart(fig, theme=None)
 col1.caption("""O gráfico mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
-           Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
+           Passe o mouse sobre o gráfico para filtrar a quantidade desejada.""")
 col2.write(df_treated_data.describe())
 col3.markdown("- 75% dos ids possuem até 20 clientes somente.")
 col3.markdown("- 75% dos ids fizeram até 204 compras.")
@@ -65,7 +65,7 @@ st.write("""Como é possível verificar no gráfico Box Plot acima,
 df_up_to_40_clients = df_treated_data.query('clientes <= 48')
 
 # showing descriptive statistics metrics and some insights
-col1, col2, col3 = st.columns([3.5,2,1])
+col1, col2, col3 = st.columns([3,2,1])
 col1.write("**Histograma de ids com até 48 clientes**")
 # Client data box plot
 # fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
@@ -83,7 +83,7 @@ fig.update_layout(
     ))
 col1.plotly_chart(fig, theme=None)
 col1.caption("""O gráfico mostrado apresenta somente os ids com até 48 clientes.
-           Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
+           Passe o mouse sobre o gráfico para filtrar a quantidade desejada.""")
 col2.write(df_up_to_40_clients.describe())
 col3.markdown("- (inserir insight)")
 
