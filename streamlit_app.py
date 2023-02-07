@@ -61,15 +61,15 @@ st.write("""Como é possível verificar no gráfico Box Plot acima,
              e portanto esse será o ponto de corte para a análise a seguir.""")
 
 # defing the dataset for the analysis
-up_to_40_clients = df_treated_data.query('clientes <= 48').count()[0]
+df_up_to_40_clients = df_treated_data.query('clientes <= 48')
 
 # showing descriptive statistics metrics and some insights
 col1, col2, col3 = st.columns([2,2,2])
-col1.write(up_to_40_clients.describe())
+col1.write(df_up_to_40_clients.describe())
 col2.markdown("- (inserir insight)")
 col3.write("**Box Plot de ids com até 48 clientes**")
 # Client data box plot
-fig = px.box(up_to_40_clients['clientes'], x="clientes")
+fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
 fig.update_layout(
     autosize=False,
     width=400,
