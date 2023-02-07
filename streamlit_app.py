@@ -65,10 +65,8 @@ st.write("""Como é possível verificar no gráfico Box Plot acima,
 df_up_to_40_clients = df_treated_data.query('clientes <= 48')
 
 # showing descriptive statistics metrics and some insights
-col1, col2, col3 = st.columns([2,2,2])
-col1.write(df_up_to_40_clients.describe())
-col2.markdown("- (inserir insight)")
-col3.write("**Histograma de ids com até 48 clientes**")
+col1, col2, col3 = st.columns([4,1,2])
+col1.write("**Histograma de ids com até 48 clientes**")
 # Client data box plot
 # fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
 fig = px.histogram(df_up_to_40_clients['clientes'], x="clientes")
@@ -83,9 +81,11 @@ fig.update_layout(
         t=30,
         pad=4
     ))
-col3.plotly_chart(fig, theme=None)
-col3.caption("""O gráfico mostrado apresenta somente os ids com até 48 clientes.
+col1.plotly_chart(fig, theme=None)
+col1.caption("""O gráfico mostrado apresenta somente os ids com até 48 clientes.
            Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
+col2.write(df_up_to_40_clients.describe())
+col3.markdown("- (inserir insight)")
 
 # defining the metrics for later use
 total_qty_ids = df_treated_data.count()[0]
