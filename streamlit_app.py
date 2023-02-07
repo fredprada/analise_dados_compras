@@ -27,7 +27,7 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
             Abaixo é possível encontrar uma tabela com esses indicadores:""")
 
 # showing descriptive statistics metrics and some insights
-col1, col2, col3 = st.columns([2,3,2])
+col1, col2, col3 = st.columns([2,2,2])
 col1.write(df_treated_data.describe())
 col2.markdown("- 75% dos ids possuem até 20 clientes somente.")
 col2.markdown("- 75% dos ids fizeram até 204 compras.")
@@ -40,8 +40,8 @@ col3.write("**Box Plot de Clientes - original do dataset, sem tratamento**")
 fig = px.box(df_treated_data['clientes'], x="clientes")
 fig.update_layout(
     autosize=False,
-    width=600,
-    height=300,
+    width=400,
+    height=200,
     margin=dict(
         l=30,
         r=30,
