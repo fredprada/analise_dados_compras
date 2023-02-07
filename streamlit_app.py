@@ -36,7 +36,7 @@ col2.markdown("- 75% dos ids não possuem nenhum fornecedor.")
 col2.markdown("- O número de outliers representa uma parcela perto de 25% dos conjuntos analisados.")
 col2.markdown("- As médias são muito afetadas pelos outliers do conjunto de dados.")
 col2.markdown("- Será necessário analisar as diferentes variáveis de acordo com essas parcelas, tanto dos ids até 75% quanto os 25% restantes.")
-col3.write("**Box Plot de Clientes - original do dataset, sem tratamento**")
+col3.write("**Histograma de ids x Clientes - original do dataset, sem tratamento**")
 # Client data box plot
 # fig = px.box(df_treated_data['clientes'], x="clientes")
 fig = px.histogram(df_treated_data['clientes'], x="clientes")
@@ -45,14 +45,14 @@ fig.update_layout(
     width=400,
     height=200,
     margin=dict(
-        l=30,
+        l=50,
         r=30,
-        b=60,
+        b=50,
         t=30,
         pad=4
     ))
 col3.plotly_chart(fig, theme=None)
-col3.caption("""O box plot mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
+col3.caption("""O gráfico mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
            Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
 # -------------------------------------------------------------
@@ -68,7 +68,7 @@ df_up_to_40_clients = df_treated_data.query('clientes <= 48')
 col1, col2, col3 = st.columns([2,2,2])
 col1.write(df_up_to_40_clients.describe())
 col2.markdown("- (inserir insight)")
-col3.write("**Box Plot de ids com até 48 clientes**")
+col3.write("**Histograma de ids com até 48 clientes**")
 # Client data box plot
 # fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
 fig = px.histogram(df_up_to_40_clients['clientes'], x="clientes")
@@ -77,14 +77,14 @@ fig.update_layout(
     width=400,
     height=200,
     margin=dict(
-        l=30,
+        l=50,
         r=30,
-        b=60,
+        b=50,
         t=30,
         pad=4
     ))
 col3.plotly_chart(fig, theme=None)
-col3.caption("""O box plot mostrado apresenta somente os ids com até 48 clientes.
+col3.caption("""O gráfico mostrado apresenta somente os ids com até 48 clientes.
            Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
 # defining the metrics for later use
