@@ -58,7 +58,7 @@ median_compras = round(df_treated_data['compras'].describe()[5])
 # col5.metric(label="média de compras", value=mean_compras)
 # col6.metric(label="mediana de compras", value=median_compras)
 
-st.subheader("Box Plot de Clientes - original do dataset, sem tratamento")
+st.write("**Box Plot de Clientes - original do dataset, sem tratamento**")
 # Client data box plot
 fig = px.box(df_treated_data['clientes'], x="clientes")
 fig.update_layout(
