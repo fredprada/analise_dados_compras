@@ -27,7 +27,7 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
             Abaixo é possível encontrar uma tabela com esses indicadores:""")
 
 # showing descriptive statistics metrics and some insights
-col1, col2, _ = st.columns([2,3,1])
+col1, col2, col3 = st.columns([2,3,2])
 col1.write(df_treated_data.describe())
 col2.markdown("- 75% dos ids possuem até 20 clientes somente.")
 col2.markdown("- 75% dos ids fizeram até 204 compras.")
@@ -35,6 +35,23 @@ col2.markdown("- 75% dos ids não possuem nenhum fornecedor.")
 col2.markdown("- O número de outliers representa uma parcela perto de 25% dos conjuntos analisados.")
 col2.markdown("- As médias são muito afetadas pelos outliers do conjunto de dados.")
 col2.markdown("- Será necessário analisar as diferentes variáveis de acordo com essas parcelas, tanto dos ids até 75% quanto os 25% restantes.")
+col3.write("**Box Plot de Clientes - original do dataset, sem tratamento**")
+# Client data box plot
+fig = px.box(df_treated_data['clientes'], x="clientes")
+fig.update_layout(
+    autosize=False,
+    width=600,
+    height=300,
+    margin=dict(
+        l=30,
+        r=30,
+        b=60,
+        t=30,
+        pad=4
+    ))
+col3.plotly_chart(fig, theme=None)
+col3.caption("""O box plot mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
+           Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
 # defining the metrics for later use
 total_qty_ids = df_treated_data.count()[0]
@@ -57,24 +74,6 @@ median_compras = round(df_treated_data['compras'].describe()[5])
 # # metric of purchase quantities
 # col5.metric(label="média de compras", value=mean_compras)
 # col6.metric(label="mediana de compras", value=median_compras)
-
-st.write("**Box Plot de Clientes - original do dataset, sem tratamento**")
-# Client data box plot
-fig = px.box(df_treated_data['clientes'], x="clientes")
-fig.update_layout(
-    autosize=False,
-    width=600,
-    height=300,
-    margin=dict(
-        l=30,
-        r=30,
-        b=60,
-        t=30,
-        pad=4
-    ))
-st.plotly_chart(fig, theme=None)
-st.caption("""O box plot mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
-           Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
 
 up_to_40_clients = df_treated_data.query('clientes <=40').count()[0]
