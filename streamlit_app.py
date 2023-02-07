@@ -38,7 +38,8 @@ col2.markdown("- As médias são muito afetadas pelos outliers do conjunto de da
 col2.markdown("- Será necessário analisar as diferentes variáveis de acordo com essas parcelas, tanto dos ids até 75% quanto os 25% restantes.")
 col3.write("**Box Plot de Clientes - original do dataset, sem tratamento**")
 # Client data box plot
-fig = px.box(df_treated_data['clientes'], x="clientes")
+# fig = px.box(df_treated_data['clientes'], x="clientes")
+fig = px.histogram(df_treated_data['clientes'], x="clientes")
 fig.update_layout(
     autosize=False,
     width=400,
@@ -69,7 +70,8 @@ col1.write(df_up_to_40_clients.describe())
 col2.markdown("- (inserir insight)")
 col3.write("**Box Plot de ids com até 48 clientes**")
 # Client data box plot
-fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
+# fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
+fig = px.histogram(df_up_to_40_clients['clientes'], x="clientes")
 fig.update_layout(
     autosize=False,
     width=400,
