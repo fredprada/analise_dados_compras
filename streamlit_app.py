@@ -28,22 +28,15 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
 
 # -------------------------------------------------------------
 # showing descriptive statistics metrics and some insights
-col1, col2, col3 = st.columns([2,2,2])
-col1.write(df_treated_data.describe())
-col2.markdown("- 75% dos ids possuem até 20 clientes somente.")
-col2.markdown("- 75% dos ids fizeram até 204 compras.")
-col2.markdown("- 75% dos ids não possuem nenhum fornecedor.")
-col2.markdown("- O número de outliers representa uma parcela perto de 25% dos conjuntos analisados.")
-col2.markdown("- As médias são muito afetadas pelos outliers do conjunto de dados.")
-col2.markdown("- Será necessário analisar as diferentes variáveis de acordo com essas parcelas, tanto dos ids até 75% quanto os 25% restantes.")
-col3.write("**Histograma de ids x Clientes - original do dataset, sem tratamento**")
+col1, col2, col3 = st.columns([3.5,2,1])
+col1.write("**Histograma de ids x Clientes - original do dataset, sem tratamento**")
 # Client data box plot
 # fig = px.box(df_treated_data['clientes'], x="clientes")
 fig = px.histogram(df_treated_data['clientes'], x="clientes")
 fig.update_layout(
     autosize=False,
-    width=400,
-    height=200,
+    width=600,
+    height=300,
     margin=dict(
         l=50,
         r=30,
@@ -51,9 +44,16 @@ fig.update_layout(
         t=30,
         pad=4
     ))
-col3.plotly_chart(fig, theme=None)
-col3.caption("""O gráfico mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
+col1.plotly_chart(fig, theme=None)
+col1.caption("""O gráfico mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
            Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
+col2.write(df_treated_data.describe())
+col3.markdown("- 75% dos ids possuem até 20 clientes somente.")
+col3.markdown("- 75% dos ids fizeram até 204 compras.")
+col3.markdown("- 75% dos ids não possuem nenhum fornecedor.")
+col3.markdown("- O número de outliers representa uma parcela perto de 25% dos conjuntos analisados.")
+col3.markdown("- As médias são muito afetadas pelos outliers do conjunto de dados.")
+col3.markdown("- Será necessário analisar as diferentes variáveis de acordo com essas parcelas, tanto dos ids até 75% quanto os 25% restantes.")
 
 # -------------------------------------------------------------
 # Data analysis separating for ids with maximum of 48 clients
@@ -65,13 +65,15 @@ st.write("""Como é possível verificar no gráfico Box Plot acima,
 df_up_to_40_clients = df_treated_data.query('clientes <= 48')
 
 # showing descriptive statistics metrics and some insights
-col1, col2, col3 = st.columns([4,2,1])
+col1, col2, col3 = st.columns([3.5,2,1])
 col1.write("**Histograma de ids com até 48 clientes**")
 # Client data box plot
 # fig = px.box(df_up_to_40_clients['clientes'], x="clientes")
 fig = px.histogram(df_up_to_40_clients['clientes'], x="clientes")
 fig.update_layout(
-    autosize=True,
+    autosize=False,
+    width=600,
+    height=300,
     margin=dict(
         l=50,
         r=30,
