@@ -26,6 +26,7 @@ st.write("""Para começar a entender um pouco mais sobre o conjunto de dados,
             podemos primeiramente analisar indicadores de estatística descritiva.
             Abaixo é possível encontrar uma tabela com esses indicadores:""")
 
+# -------------------------------------------------------------
 # showing descriptive statistics metrics and some insights
 col1, col2, col3 = st.columns([2,2,2])
 col1.write(df_treated_data.describe())
@@ -53,27 +54,40 @@ col3.plotly_chart(fig, theme=None)
 col3.caption("""O box plot mostrado não possui qualquer tratamento, e representa os dados da forma que foram coletados.
            Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
 
+# -------------------------------------------------------------
+# Data analysis separating for ids with maximum of 48 clients
+st.write("""Como é possível verificar no gráfico Box Plot acima, 
+            o valor máximo, sem considerar outliers, é de 48, 
+             e portanto esse será o ponto de corte para a análise a seguir.""")
+
+# defing the dataset for the analysis
+up_to_40_clients = df_treated_data.query('clientes <= 48').count()[0]
+
+# showing descriptive statistics metrics and some insights
+col1, col2, col3 = st.columns([2,2,2])
+col1.write(up_to_40_clients.describe())
+col2.markdown("- (inserir insight)")
+col3.write("**Box Plot de ids com até 48 clientes**")
+# Client data box plot
+fig = px.box(up_to_40_clients['clientes'], x="clientes")
+fig.update_layout(
+    autosize=False,
+    width=400,
+    height=200,
+    margin=dict(
+        l=30,
+        r=30,
+        b=60,
+        t=30,
+        pad=4
+    ))
+col3.plotly_chart(fig, theme=None)
+col3.caption("""O box plot mostrado apresenta somente os ids com até 48 clientes.
+           Passe o mouse sobre o gráfico e filtre a quantidade desejada.""")
+
 # defining the metrics for later use
 total_qty_ids = df_treated_data.count()[0]
 mean_clientes = round(df_treated_data['clientes'].describe()[1])
 median_clientes = round(df_treated_data['clientes'].describe()[5])
 mean_compras = round(df_treated_data['compras'].describe()[1])
 median_compras = round(df_treated_data['compras'].describe()[5])
-
-# AS LINHAS COMENTADAS ABAIXO COLOCAM MÉTRICAS EM COLUNAS E LINHAS, MAS SUBSTITUÍ PELA TABELA NO COMEÇO
-# # titles of the metrics to be presented
-# col1, col2 = st.columns(2)
-# col1.subheader("Métricas sobre o número de clientes:")
-# col2.subheader("Métricas sobre o número de compras:")
-
-# # metric of client quantities
-# col1, col2, col3, col4, col5, col6, col7, col8 = st.columns(8)
-# col1.metric(label="média de clientes", value=mean_clientes)
-# col2.metric(label="mediana de clientes", value=median_clientes)
-
-# # metric of purchase quantities
-# col5.metric(label="média de compras", value=mean_compras)
-# col6.metric(label="mediana de compras", value=median_compras)
-
-
-up_to_40_clients = df_treated_data.query('clientes <=40').count()[0]
